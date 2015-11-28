@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 83c2e5c3625691846825b382e8931c0b
-timeCreated: 1448658684
+timeCreated: 1448684314
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -59,10 +59,10 @@ TextureImporter:
     - name: LoadingScreenJam_Texture_crane_pulley
       rect:
         serializedVersion: 2
-        x: 166
-        y: 62
-        width: 48
-        height: 48
+        x: 135
+        y: 48
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
