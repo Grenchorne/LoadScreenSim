@@ -9,7 +9,7 @@ public class Cloud : MonoBehaviour
 	private float cycleTime = 1;
 
 	private float degrees;
-	private Vector2 position;
+	private float positionY;
 
 	public static GameObject CreateCloud(	Sprite sprite,
 											Vector2 position,
@@ -19,7 +19,9 @@ public class Cloud : MonoBehaviour
 											float size = 1)
 	{
 		GameObject cloudObject = new GameObject("Cloud");
-		cloudObject.AddComponent<SpriteRenderer>().sprite = sprite;
+		SpriteRenderer spriteRenderer = cloudObject.AddComponent<SpriteRenderer>();
+		spriteRenderer.sprite = sprite;
+		spriteRenderer.sortingOrder = -100;
 		cloudObject.AddComponent<LateDestroyerComponent>();
 		Cloud cloud = cloudObject.AddComponent<Cloud>();
 		cloud.speed = speed;
@@ -27,12 +29,8 @@ public class Cloud : MonoBehaviour
 		cloud.cycleTime = cycleTime;
 		cloud.transform.localScale = new Vector3(size, size, size);
 		cloud.transform.position = position;
+		cloud.positionY = cloud.transform.position.y;
 		return cloudObject;
-	}
-
-	private void Start()
-	{
-		position = transform.position;
 	}
 
 	private void Update()
@@ -43,11 +41,8 @@ public class Cloud : MonoBehaviour
 		degrees = Mathf.Repeat(degrees + (deltaTime * degreesPerSecond), 360);
 		float radians = degrees * Mathf.Deg2Rad;
 
-		//Vector2 offset = new Vector2(0,	amplitude * Mathf.Cos(radians));
-
-		//transform.position = (position + offset);
-		//transform.Translate(Vector2.right * speed * deltaTime);
-		transform.Translate(new Vector2(speed * deltaTime, position.y + amplitude * Mathf.Cos(radians)));
+		float offsetY = amplitude * Mathf.Cos(radians);
+		transform.position = new Vector2(transform.position.x + (speed * deltaTime), offsetY);
 	}
 
 }

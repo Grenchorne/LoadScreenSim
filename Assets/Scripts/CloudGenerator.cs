@@ -37,29 +37,27 @@ public class CloudGenerator : MonoBehaviour
 	void Update()
 	{
 		float deltaTime = Time.deltaTime;
-		//Count down to spawn
 		if(spawnTimer > 0)
 		{
 			spawnTimer -= deltaTime;
 			return;
 		}
-
-		//Check if particles are maxed
 		if(GameObject.FindObjectsOfType<Cloud>().Length >= particles_max)
 			return;
-
-		//All good? Spawn a cloud
 		spawnCloud();
 	}
 
 	private void spawnCloud()
 	{
-		Cloud.CreateCloud(	cloudSprites[Random.Range(0, cloudSprites.Length)],
-							new Vector2(transform.position.x, Random.Range(spawnRadius * -1 * 0.5f, spawnRadius * 0.5f)),
+		Vector2 pos = transform.position;
+		GameObject cloud = Cloud.CreateCloud(	cloudSprites[Random.Range(0, cloudSprites.Length)],
+							new Vector2(pos.x, pos.y + Random.Range(spawnRadius * -1 * 0.5f, spawnRadius * 0.5f)),
 							Random.Range(speed_min, speed_max),
 							Random.Range(amplitude_min, amplitude_max),
 							Random.Range(cycleTime_min, cycleTime_max),
 							Random.Range(size_min, size_max));
+
+		cloud.transform.parent = transform;
 		resetTimer();
 	}
 }
