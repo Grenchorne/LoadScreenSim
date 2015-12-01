@@ -1,3 +1,6 @@
+# Unity
+# =========================
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -70,10 +73,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-
-# Unity
-# =========================
-
-/Loading Screen Jam/Temp/
-/Loading Screen Jam/Library/
