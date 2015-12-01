@@ -17,30 +17,31 @@ public class WaterComponent: MonoBehaviour
 	public float amplitude_horizontal = 0f;
 	public float cycleTime = 5;
 
-	float degrees_x, degrees_y;
+	float degrees;
 
 	Vector2 fore_position;
 	Vector2 mid_position;
 	Vector2 back_position;
 
 	bool fore_start, mid_start, back_start;
+	float startDelay = 0.5f;
 
 	IEnumerator waterDelay()
 	{
 		if(!fore_start)
 		{
 			fore_start = true;
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(startDelay);
 		}
 		if(!mid_start)
 		{
 			mid_start = true;
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(startDelay);
 		}
 		if(!back_start)
 		{
 			back_start = true;
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(startDelay);
 		}
 		yield break;
 	}
@@ -52,24 +53,22 @@ public class WaterComponent: MonoBehaviour
 		mid_position = midground.transform.position;
 		back_position = background.transform.position;
 
+		fore_start = false;
+		mid_start = false;
+		back_start = false;
 		StartCoroutine(waterDelay());
 	}
-
 
 	private void Update()
 	{
 		float deltaTime = Time.deltaTime;
 
-		float degreesPerSecond_y = 360  / cycleTime;
-		float degreesPerSecond_x = degreesPerSecond_y * 2;
+		float degreesPerSecond = 360 / cycleTime;
+		degrees = Mathf.Repeat(degrees + (deltaTime * degreesPerSecond), 360);
+		float radians = degrees * Mathf.Deg2Rad;
 
-		degrees_x = Mathf.Repeat(degrees_x + (deltaTime * degreesPerSecond_x), 360);
-		degrees_y = Mathf.Repeat(degrees_y + (deltaTime * degreesPerSecond_y), 360);
-		float radians_x = degrees_x * Mathf.Deg2Rad;
-		float radians_y = degrees_y * Mathf.Deg2Rad;
-
-		Vector2 offset = new Vector2(amplitude_horizontal * Mathf.Sin(radians_x),
-										amplitude_vertical * Mathf.Sin(radians_y));
+		Vector2 offset = new Vector2(amplitude_horizontal * Mathf.Sin(radians),
+										amplitude_vertical * Mathf.Cos(radians));
 
 		if(fore_start)
 			foreground.position = fore_position + offset * 1.125f;
@@ -89,6 +88,10 @@ public class WaterComponent: MonoBehaviour
 		body.drag = drag;
 		body.fixedAngle = true;
 		body.gameObject.AddComponent<LateDestroyerComponent>();
+
+		BoxCollider2D boxCollider2d = body.GetComponent<BoxCollider2D>();
+		if(boxCollider2d)
+			Component.Destroy(boxCollider2d);
 
 		foreach(Transform child in body.transform)
 			GameObject.Destroy(child.gameObject);
