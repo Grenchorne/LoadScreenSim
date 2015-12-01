@@ -1,19 +1,15 @@
 fileFormatVersion: 2
-guid: 83c2e5c3625691846825b382e8931c0b
-timeCreated: 1448953175
+guid: 832ce754b1f3d77408d7f1f4cbb36a47
+timeCreated: 1448953360
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: LoadingScreenJam_Texture_crane_pulley
-    21300002: LoadingScreenJam_Texture_crane_rope
-    21300004: LoadingScreenJam_Texture_crane_magnet
-    21300006: LoadingScreenJam_Texture_crane_point
-    21300008: LoadingScreenJam__Texture_crane_straight
-    21300010: LoadingScreenJam_Texture_crate
-    21300012: LoadingScreenJam_Texture_crane_straight
-    21300014: LoadingScreenJam_Light_Red
-    21300016: LoadingScreenJam_Light_Green
-    21300018: LoadingScreenJam_Light_Yellow
+    21300000: LoadingScreenJam_Cloud_2
+    21300002: LoadingScreenJam_Cloud_1
+    21300004: LoadingScreenJam_Brick
+    21300006: LoadingScreenJam_boat_top
+    21300008: LoadingScreenJam_Boat_Bottom
+    21300010: LoadingScreenJam_Water
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,93 +55,63 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: LoadingScreenJam_Texture_crane_pulley
+    - name: LoadingScreenJam_Cloud_2
       rect:
         serializedVersion: 2
-        x: 130
-        y: 48
-        width: 80
-        height: 80
+        x: 148
+        y: 134
+        width: 108
+        height: 74
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Texture_crane_rope
+    - name: LoadingScreenJam_Cloud_1
       rect:
         serializedVersion: 2
-        x: 248
-        y: 64
-        width: 8
-        height: 64
+        x: 172
+        y: 209
+        width: 84
+        height: 47
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Texture_crane_magnet
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 2
-        width: 64
-        height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Texture_crane_point
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 136
-        width: 128
-        height: 120
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Texture_crane_straight
+    - name: LoadingScreenJam_Brick
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 128
-        height: 128
+        y: 240
+        width: 64
+        height: 16
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Texture_crate
+    - name: LoadingScreenJam_boat_top
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 157
+        width: 72
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LoadingScreenJam_Boat_Bottom
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 139
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LoadingScreenJam_Water
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Light_Red
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 47
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Light_Green
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 30
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LoadingScreenJam_Light_Yellow
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 13
-        width: 16
-        height: 16
+        width: 168
+        height: 39
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
