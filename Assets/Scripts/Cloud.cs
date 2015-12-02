@@ -22,7 +22,6 @@ public class Cloud : MonoBehaviour
 		SpriteRenderer spriteRenderer = cloudObject.AddComponent<SpriteRenderer>();
 		spriteRenderer.sprite = sprite;
 		spriteRenderer.sortingOrder = -100;
-		cloudObject.AddComponent<LateDestroyerComponent>();
 		Cloud cloud = cloudObject.AddComponent<Cloud>();
 		cloud.speed = speed;
 		cloud.amplitude = amplitude;
@@ -30,6 +29,7 @@ public class Cloud : MonoBehaviour
 		cloud.transform.localScale = new Vector3(size, size, size);
 		cloud.transform.position = position;
 		cloud.positionY = cloud.transform.position.y;
+
 		return cloudObject;
 	}
 
@@ -41,8 +41,10 @@ public class Cloud : MonoBehaviour
 		degrees = Mathf.Repeat(degrees + (deltaTime * degreesPerSecond), 360);
 		float radians = degrees * Mathf.Deg2Rad;
 
-		float offsetY = amplitude * Mathf.Cos(radians);
+		float offsetY = amplitude * Mathf.Cos(radians) + positionY;
 		transform.position = new Vector2(transform.position.x + (speed * deltaTime), offsetY);
-	}
 
+		if(!GetComponent<LateDestroyerComponent>() && GetComponent<SpriteRenderer>().isVisible)
+			gameObject.AddComponent<LateDestroyerComponent>();
+	}
 }
