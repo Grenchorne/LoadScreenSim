@@ -80,7 +80,6 @@ public class WaterComponent: MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collider2d)
 	{
-		if(collider2d.name == "Magnet")	return;
 		Rigidbody2D body = collider2d.GetComponent<Rigidbody2D>();
 		if(!body)	body = collider2d.GetComponentInChildren<Rigidbody2D>();
 		if(!body)	return;
@@ -92,6 +91,8 @@ public class WaterComponent: MonoBehaviour
 		BoxCollider2D boxCollider2d = body.GetComponent<BoxCollider2D>();
 		if(boxCollider2d)
 			Component.Destroy(boxCollider2d);
+
+		GameObject.FindObjectOfType<CrateCatcher>().SuccessValue--;
 
 		foreach(Transform child in body.transform)
 			GameObject.Destroy(child.gameObject);

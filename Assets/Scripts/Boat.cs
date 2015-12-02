@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Boat : MonoBehaviour
 {
+
 	public float amplitude_vertical = 0.3f;
 	public float amplitude_horizontal = 0.1f;
 	public float amplitude_zRotation = 0.1f;
