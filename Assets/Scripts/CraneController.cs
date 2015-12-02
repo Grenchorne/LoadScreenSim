@@ -10,12 +10,58 @@ public class CraneController : MonoBehaviour
 	private bool _inRange;
 	public bool InRange
 	{
-		get { return _inRange; }
+		get
+		{
+			if(!magnetComponent.isAttached)
+			{
+				if(_inRange)
+					MagnetState = Magnet_State.green;
+				else
+					MagnetState = Magnet_State.red;
+			}
+			return _inRange;
+		}
 		set
 		{
 			_inRange = value;
 		}
 	}
+
+	public enum Magnet_State
+	{
+		green, yellow, red
+	}
+
+	private Magnet_State _magnetState;
+	public Magnet_State MagnetState
+	{
+		get { return _magnetState; }
+		set
+		{
+			greenLight.SetActive(false);
+			yellowLight.SetActive(false);
+			redLight.SetActive(false);
+
+			switch(value)
+			{
+				case Magnet_State.green:
+					greenLight.SetActive(true);
+					break;
+				case Magnet_State.yellow:
+					yellowLight.SetActive(true);
+					break;
+				case Magnet_State.red:
+					redLight.SetActive(true);
+					break;
+			}
+			_magnetState = value;
+		}
+	}
+
+	public GameObject greenLight;
+	public GameObject yellowLight;
+	public GameObject redLight;
+
 
 	const float COOLDOWN_TIME = 0.5f;
 	private float cooldownTime = 0;

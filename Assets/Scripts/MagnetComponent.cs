@@ -32,9 +32,9 @@ public class MagnetComponent : MonoBehaviour {
 		{
 			if(attachedCrateTransform)
 			{
-				Debug.Log("DETATCH!");
 				attachedCrateTransform.GetComponent<HingeJoint2D>().enabled = false;
 				isAttached = false;
+				craneController.MagnetState = CraneController.Magnet_State.red;
 			}
 			return;
 		}
@@ -46,6 +46,7 @@ public class MagnetComponent : MonoBehaviour {
 			joint.enabled = true;
 			attachedCrateTransform = joint.transform;
 			isAttached = true;
+			craneController.MagnetState = CraneController.Magnet_State.yellow;
 			return;
 		}
 
