@@ -5,12 +5,16 @@ using System.Collections.Generic;
 
 public class CrateCatcher : MonoBehaviour
 {
+	Timer timer;
 	MagnetComponent magnet;
+	CrateSpawner crateSpawner;
+
+	public GameObject winScreen;
+
 	public Slider loadingSlider;
 	public Slider failSlider;
 
 	private int _successValue;
-
 	public int SuccessValue
 	{
 		get { return _successValue; }
@@ -36,19 +40,16 @@ public class CrateCatcher : MonoBehaviour
 			_successValue = value;
 			if(_successValue <= -3)
 			{
-				Debug.Log("Load Failed. Try again?");
+				crateSpawner.spawnCrate();
 			}
-			if(_successValue >= 5 && !magnet.isAttached)
-			{
-				Debug.Log("You Win!");
-			}
-
 		}
 	}
 
 	void Start()
 	{
+		timer = GameObject.FindObjectOfType<Timer>();
 		magnet = GameObject.FindObjectOfType<MagnetComponent>();
+		crateSpawner = GameObject.FindObjectOfType<CrateSpawner>();
 	}
 
 	void OnTriggerEnter2D(Collider2D collider2D)
@@ -59,5 +60,15 @@ public class CrateCatcher : MonoBehaviour
 	void OnTriggerExit2D(Collider2D collider2D)
 	{
 		SuccessValue--;
-	}	
+	}
+
+	void Update()
+	{
+		//Check for win
+		if(SuccessValue >= 5 && !magnet.isAttached)
+		{
+			winScreen.SetActive(true);
+			timer.stop();
+		}
+	}
 }

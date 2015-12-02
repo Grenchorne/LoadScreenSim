@@ -3,14 +3,14 @@ using System.Collections;
 
 public class CrateSpawner : MonoBehaviour
 {
+	public GameObject objectToSpawn;
 
-	private void Start()
+	public void spawnCrate()
 	{
-	
-	}
-	
-	private void Update()
-	{
-	
+		GameObject spawnedCrate = GameObject.Instantiate(objectToSpawn);
+		spawnedCrate.transform.position = transform.position;
+		spawnedCrate.transform.rotation = transform.rotation;
+
+		spawnedCrate.GetComponent<HingeJoint2D>().connectedBody = GameObject.FindObjectOfType<MagnetComponent>().GetComponent<Rigidbody2D>();
 	}
 }
