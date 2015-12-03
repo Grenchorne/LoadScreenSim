@@ -11,12 +11,12 @@ public class CrateCatcher : MonoBehaviour
 
 	public GameObject winScreen;
 
-	private SpriteRenderer[] indicators;
-	public SpriteRenderer indicator0;
-	public SpriteRenderer indicator1;
-	public SpriteRenderer indicator2;
-	public SpriteRenderer indicator3;
-	public SpriteRenderer indicator4;
+	private Image[] indicators;
+	public Image indicator0;
+	public Image indicator1;
+	public Image indicator2;
+	public Image indicator3;
+	public Image indicator4;
 
 	private Color opaqueColor;
 	private Color transparentColor;
@@ -45,7 +45,7 @@ public class CrateCatcher : MonoBehaviour
 		timer = GameObject.FindObjectOfType<Timer>();
 		magnet = GameObject.FindObjectOfType<MagnetComponent>();
 		crateSpawner = GameObject.FindObjectOfType<CrateSpawner>();
-		indicators = new SpriteRenderer[]
+		indicators = new Image[]
 		{
 			indicator0,
 			indicator1,
@@ -55,10 +55,8 @@ public class CrateCatcher : MonoBehaviour
 		};
 		opaqueColor = new Color(1, 1, 1, 1);
 		transparentColor = new Color(1, 1, 1, 0.3f);
-		foreach(SpriteRenderer s in indicators)
-		{
-			s.color = transparentColor;
-		}
+		foreach(Image image in indicators)
+			image.color = transparentColor;
 	}
 
 	void OnTriggerEnter2D(Collider2D collider2D)

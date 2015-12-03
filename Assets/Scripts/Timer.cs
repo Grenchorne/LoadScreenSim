@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
 		time += Time.deltaTime;
 
 		TimeSpan timeSpan = TimeSpan.FromSeconds(time);
-		timerText.text =  string.Format("{1:D2}m:{2:D2}s:{3:D3}ms", 
+		timerText.text =  string.Format("{1:D2}:{2:D2}:{3:D3}", 
                 timeSpan.Hours, 
                 timeSpan.Minutes, 
                 timeSpan.Seconds, 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 83c2e5c3625691846825b382e8931c0b
-timeCreated: 1448953175
+timeCreated: 1449119950
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,6 +14,7 @@ TextureImporter:
     21300014: LoadingScreenJam_Light_Red
     21300016: LoadingScreenJam_Light_Green
     21300018: LoadingScreenJam_Light_Yellow
+    21300020: LoadingScreenJam_Arrows
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -146,6 +147,16 @@ TextureImporter:
         y: 13
         width: 16
         height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LoadingScreenJam_Arrows
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 2
+        width: 27
+        height: 44
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

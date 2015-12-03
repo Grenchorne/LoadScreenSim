@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 832ce754b1f3d77408d7f1f4cbb36a47
-timeCreated: 1448956697
+timeCreated: 1449120409
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,11 @@ TextureImporter:
     21300006: LoadingScreenJam_boat_top
     21300008: LoadingScreenJam_Boat_Bottom
     21300010: LoadingScreenJam_Water
+    21300012: space
+    21300014: w
+    21300016: a
+    21300018: d
+    21300020: s
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -112,6 +117,56 @@ TextureImporter:
         y: 0
         width: 168
         height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 227
+        width: 91
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: w
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 185
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: a
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 185
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: d
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 157
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: s
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 157
+        width: 15
+        height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
