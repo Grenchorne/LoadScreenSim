@@ -5,8 +5,9 @@ using System.Collections;
 public class WaterComponent: MonoBehaviour
 {
 	private const float drag = 100;
-	public ParticleSystem splash;
+	private float yPos;
 
+	public GameObject splashSystem;
 
 	#region Props
 	public Transform foreground;
@@ -57,6 +58,7 @@ public class WaterComponent: MonoBehaviour
 		mid_start = false;
 		back_start = false;
 		StartCoroutine(waterDelay());
+		yPos = transform.position.y + 1;
 	}
 
 	private void Update()
@@ -100,6 +102,9 @@ public class WaterComponent: MonoBehaviour
 		if(GameObject.FindGameObjectsWithTag("Crate").Length < 5)
 			GameObject.FindObjectOfType<CrateSpawner>().spawnCrate();
 
+		GameObject splash = GameObject.Instantiate(splashSystem);
+		splash.transform.position = new Vector2(collider2d.transform.position.x, yPos);
+		splash.AddComponent<TimedDestroyer>();
 	}
 
 	private void Reset()
