@@ -90,12 +90,16 @@ public class WaterComponent: MonoBehaviour
 
 		BoxCollider2D boxCollider2d = body.GetComponent<BoxCollider2D>();
 		if(boxCollider2d)
-			Component.Destroy(boxCollider2d);
+			boxCollider2d.isTrigger = true;
 
-		GameObject.FindObjectOfType<CrateCatcher>().SuccessValue--;
+		body.tag = "Untagged";
 
 		foreach(Transform child in body.transform)
 			GameObject.Destroy(child.gameObject);
+		
+		if(GameObject.FindGameObjectsWithTag("Crate").Length < 5)
+			GameObject.FindObjectOfType<CrateSpawner>().spawnCrate();
+
 	}
 
 	private void Reset()

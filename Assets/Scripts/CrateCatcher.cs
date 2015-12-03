@@ -11,37 +11,32 @@ public class CrateCatcher : MonoBehaviour
 
 	public GameObject winScreen;
 
-	public Slider loadingSlider;
-	public Slider failSlider;
+	private SpriteRenderer[] indicators;
+	public SpriteRenderer indicator0;
+	public SpriteRenderer indicator1;
+	public SpriteRenderer indicator2;
+	public SpriteRenderer indicator3;
+	public SpriteRenderer indicator4;
 
-	private int _successValue;
-	public int SuccessValue
+	private Color opaqueColor;
+	private Color transparentColor;
+
+	private int _successfulDrops;
+	public int SuccessfulDrops
 	{
-		get { return _successValue; }
+		get
+		{
+			return _successfulDrops;
+		}
 		set
 		{
-			//Remove
-			if(value < SuccessValue)
-			{
-				if(loadingSlider.value > 0)
-					loadingSlider.value--;
-				else
-					failSlider.value++;
-			}
+			if(value < _successfulDrops)
+				indicators[_successfulDrops - 1].color = transparentColor;
 
-			//Add
-			else
-			{
-				if(failSlider.value > 0)
-					failSlider.value--;
-				else
-					loadingSlider.value++;
-			}
-			_successValue = value;
-			if(_successValue <= -3)
-			{
-				crateSpawner.spawnCrate();
-			}
+			else if(value > _successfulDrops)
+				indicators[value - 1].color = opaqueColor;
+
+			_successfulDrops = value;
 		}
 	}
 
@@ -50,22 +45,35 @@ public class CrateCatcher : MonoBehaviour
 		timer = GameObject.FindObjectOfType<Timer>();
 		magnet = GameObject.FindObjectOfType<MagnetComponent>();
 		crateSpawner = GameObject.FindObjectOfType<CrateSpawner>();
+		indicators = new SpriteRenderer[]
+		{
+			indicator0,
+			indicator1,
+			indicator2,
+			indicator3,
+			indicator4
+		};
+		opaqueColor = new Color(1, 1, 1, 1);
+		transparentColor = new Color(1, 1, 1, 0.3f);
+		foreach(SpriteRenderer s in indicators)
+		{
+			s.color = transparentColor;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collider2D)
 	{
-			SuccessValue++;
+			SuccessfulDrops++;
 	}
 
 	void OnTriggerExit2D(Collider2D collider2D)
 	{
-		SuccessValue--;
+		SuccessfulDrops--;
 	}
 
 	void Update()
 	{
-		//Check for win
-		if(SuccessValue >= 5 && !magnet.isAttached)
+		if(SuccessfulDrops >= 5 && !magnet.isAttached)
 		{
 			winScreen.SetActive(true);
 			timer.stop();

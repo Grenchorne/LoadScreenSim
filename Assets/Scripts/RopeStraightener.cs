@@ -21,22 +21,5 @@ public class RopeStraightener : MonoBehaviour
 
 		body.fixedAngle = isUp;
 		craneController.controlRope = body.transform;
-		 
-
-		/*
-		if(isUp)
-		{
-			Debug.Log("Straighten");
-			//body.transform.rotation = new Quaternion();
-			body.fixedAngle = true;
-			craneController.controlRope = body.transform;	
-		}
-		else
-		{
-			Debug.Log("Loosen");
-			body.fixedAngle = false;
-			craneController.controlRope = body.transform;
-		}
-		 */
 	}
 }
